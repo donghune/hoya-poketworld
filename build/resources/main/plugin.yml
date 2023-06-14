@@ -1,0 +1,8 @@
+name: poketworld
+version: '1.0-SNAPSHOT'
+main: io.github.donghune.poketworld.PoketWorld
+commands:
+  customitem:
+    description: customitem
+    usage: /customitem
+    aliases: [ci]

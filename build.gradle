@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.8.22'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'io.github.donghune'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "spigotmc-repo"
+        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+    }
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public/"
+    }
+    maven {
+        name = "minecraft"
+        url "https://libraries.minecraft.net"
+    }
+}
+
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "com.mojang:brigadier:1.0.18"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
+    implementation "org.jetbrains.exposed:exposed-core:0.40.1"
+    implementation "org.jetbrains.exposed:exposed-dao:0.40.1"
+    implementation "org.jetbrains.exposed:exposed-jdbc:0.40.1"
+    implementation "org.jetbrains.exposed:exposed-java-time:0.40.1"
+}
+
+def targetJavaVersion = 8
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        options.release = targetJavaVersion
+    }
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+kotlin {
+    jvmToolchain(8)
+}
+
+tasks.register('copyJar', Copy) {
+    from './build/libs/poketworld-1.0-SNAPSHOT-all.jar'
+    into '/Users/yudonghun/Downloads/catserver/plugins'
+}
+
+tasks.shadowJar.finalizedBy(tasks.copyJar)
+tasks.build.finalizedBy(tasks.shadowJar)

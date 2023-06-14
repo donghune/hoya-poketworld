@@ -1,0 +1,8 @@
+name: poketworld
+version: '${version}'
+main: io.github.donghune.poketworld.PoketWorld
+commands:
+  customitem:
+    description: customitem
+    usage: /customitem
+    aliases: [ci]
