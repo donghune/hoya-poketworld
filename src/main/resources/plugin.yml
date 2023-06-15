@@ -5,4 +5,36 @@ commands:
   customitem:
     description: customitem
     usage: /customitem
-    aliases: [ci]
+    aliases: [ ci ]
+  regenblock:
+    description: regenblock
+    usage: /regenblock
+    aliases: [ rb ]
+  randombox:
+    description: randombox
+    usage: /randombox
+    aliases: [ box ]
+  checkpaper:
+    description: checkpaper
+    usage: /checkpaper
+    aliases: [ cp ]
+  announce:
+    description: announce
+    usage: /announce
+    aliases: [ an ]
+  localchat:
+    description: localchat
+    usage: /localchat
+    aliases: [ lc ]
+  giveall:
+    description: giveall
+    usage: /giveall
+    aliases: [ ga ]
+  basicitem:
+    description: basicitem
+    usage: /basicitem
+    aliases: [ bi ]
+  torch:
+    description: torch
+    usage: /torch
+    aliases: [ to ]

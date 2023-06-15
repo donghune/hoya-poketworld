@@ -1,5 +1,6 @@
 package io.github.donghune.poketworld.customitem
 
+import io.github.donghune.poketworld.UsageCommandExecutor
 import org.bukkit.Material
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -7,11 +8,16 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class CustomItemCommand : CommandExecutor {
+class CustomItemCommand : UsageCommandExecutor {
 
-    private val usage = """
-        사용법: /customitem <create|delete|update|get> <itemId:int>
-    """.trimIndent()
+    override val usage: String
+        get() = """
+            /customitem create <name> -> 커스텀 아이템을 생성합니다.
+            /customitem delete <id> -> 커스텀 아이템을 제거합니다.
+            /customitem update <id> -> 커스텀 아이템을 수정합니다.
+            /customitem get <id> -> 커스텀 아이템을 얻습니다.
+            /customitem list <page> <size> -> 커스텀 아이템 목록을 확인합니다.
+        """.trimIndent()
 
     override fun onCommand(
         sender: CommandSender,
