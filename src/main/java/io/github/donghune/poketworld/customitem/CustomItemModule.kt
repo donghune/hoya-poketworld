@@ -11,7 +11,8 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class CustomItemModule : Module() {
 
     override fun onEnable(plugin: JavaPlugin) {
-        Bukkit.getPluginCommand("customitem")?.executor = CustomItemCommand()
+        plugin.getCommand("customitem")?.executor = CustomItemCommand()
+        plugin.getCommand("nbteditor")?.executor = NbtEditorCommand()
         transaction { SchemaUtils.create(CustomItems) }
         transaction { CustomItem.new { this.itemStack = ItemStack(Material.ACACIA_DOOR_ITEM) } }
     }
