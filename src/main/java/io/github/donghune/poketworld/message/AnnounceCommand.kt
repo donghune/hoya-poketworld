@@ -3,7 +3,6 @@ package io.github.donghune.poketworld.message
 import io.github.donghune.poketworld.UsageCommandExecutor
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
-import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 
 class AnnounceCommand : UsageCommandExecutor {

@@ -7,7 +7,6 @@ import io.github.donghune.poketworld.message.MessageModule
 import io.github.donghune.poketworld.randombox.RandomBoxModule
 import io.github.donghune.poketworld.regenblock.RegenBlockModule
 import io.github.donghune.poketworld.utility.UtilityModule
-import org.bukkit.Utility
 import org.bukkit.plugin.java.JavaPlugin
 
 class PoketWorld : JavaPlugin() {

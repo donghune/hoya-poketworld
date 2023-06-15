@@ -10,10 +10,11 @@ class RegenBlockModule : Module() {
         plugin.server.pluginManager.registerEvents(RegenBlockListener(plugin), plugin)
         plugin.getCommand("regenblock")?.executor = RegenBlockCommand()
         transaction { SchemaUtils.create(RegenAreas, RegenBlocks) }
+        RegenBlockManager.cancelAll()
     }
 
     override fun onDisable(plugin: JavaPlugin) {
-
+        RegenBlockManager.cancelAll()
     }
 }
 

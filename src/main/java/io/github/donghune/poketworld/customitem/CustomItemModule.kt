@@ -1,7 +1,6 @@
 package io.github.donghune.poketworld.customitem
 
 import io.github.donghune.poketworld.Module
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin

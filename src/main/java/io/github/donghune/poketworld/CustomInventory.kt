@@ -27,13 +27,6 @@ abstract class CustomInventory private constructor(
         size: Int,
     ) : this(plugin, player, Bukkit.createInventory(null, size, title))
 
-    constructor(
-        plugin: Plugin,
-        player: Player,
-        title: String,
-        type: InventoryType,
-    ) : this(plugin, player, Bukkit.createInventory(null, type, title))
-
     fun inventory(block: () -> Unit) {
         content = block
     }
