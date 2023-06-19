@@ -42,3 +42,7 @@ commands:
     description: nbteditor
     usage: /nbteditor
     aliases: [ nbt ]
+  seasonpass:
+    description: seasonpass
+    usage: /seasonpass
+    aliases: [ sp ]

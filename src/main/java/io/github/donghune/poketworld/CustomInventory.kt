@@ -1,6 +1,7 @@
 package io.github.donghune.poketworld
 
 import org.bukkit.Bukkit
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -112,5 +113,24 @@ abstract class CustomInventory private constructor(
     fun setItem(index: Int, itemStack: ItemStack?, onClick: InventoryClickEvent.() -> Unit = {}) {
         inventory.setItem(index, itemStack)
         clickEvents[index] = onClick
+    }
+}
+
+fun icon(function: Icon.() -> Unit): ItemStack {
+    return Icon().apply(function).toItemStack()
+}
+
+data class Icon(
+    var name: String = "",
+    var type: Material = Material.BOOK,
+    var lore: List<String> = listOf(),
+) {
+    fun toItemStack(): ItemStack {
+        return ItemStack(type).apply {
+            val meta = itemMeta
+            meta?.displayName = name
+            meta?.lore = lore
+            itemMeta = meta
+        }
     }
 }
